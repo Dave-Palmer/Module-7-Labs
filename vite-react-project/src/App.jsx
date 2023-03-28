@@ -13,6 +13,8 @@ import { EmojiProvider } from './context/EmojiContext'
 import AppRoutes from './routes/Approutes'
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
+import { ErrorBoundary } from 'react-error-boundary'
+import ErrorMessage from './components/ErrorHandler'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -26,14 +28,16 @@ function App() {
         <UsernameProvider>
           <EmojiProvider>
             <NavBar />
-            <AppRoutes />
-            {/* <EmojisDisplay /> */}
-            {/* <Hello /> */}
-            {/* <Counter /> */}
-            {/* <WindowResizer /> */}
-            {/* <HookClockDisplay /> */}
-            {/* <HeadingsExample /> */}
-            <Footer />
+            <ErrorBoundary FallbackComponent={ErrorMessage}>
+              <AppRoutes />
+              {/* <EmojisDisplay /> */}
+              {/* <Hello /> */}
+              {/* <Counter /> */}
+              {/* <WindowResizer /> */}
+              {/* <HookClockDisplay /> */}
+              {/* <HeadingsExample /> */}
+              <Footer />
+            </ErrorBoundary>
           </EmojiProvider>
         </UsernameProvider>
       </ThemeProvider>

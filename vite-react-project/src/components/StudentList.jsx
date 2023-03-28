@@ -1,6 +1,8 @@
 import React from 'react';
-import Student from './Student';
+// import Student from './Student';
 import StudentCard from './StudentCard';
+import { useNavigate } from 'react-router-dom'
+
 import Grid from '@mui/material/Grid'; // Grid version 1
 
 //an array of objects (could come from an API or DB). to render each one in turn, we need to iterate over them,
@@ -74,11 +76,10 @@ export const students = [
 ]
 
 function StudentList() {
-
-    const [currentStudents, setCurrentStudents] = React.useState(students)
+    const navigate = useNavigate()
 
     //we can either create a variable storing all the list items and render it, OR we can move this students.map down into the return directly
-    const studentList = currentStudents.map((student, index) => /* in a pinch you can use the array index as the key but it's not recommended */
+    const studentList = students.map((student, index) => /* in a pinch you can use the array index as the key but it's not recommended */
         <Grid key={student.id} item xs={12} md={6} lg={4}>
             <StudentCard id={student.id} name={student.name} location={student.location} set="set2" description={student.description} />
         </Grid>
@@ -93,8 +94,7 @@ function StudentList() {
                 {studentList}
             </Grid>
             {/* since reverse modifies the original array and we shouldn't mutate state directly, we clone it first */}
-            <button onClick={() => setCurrentStudents([...currentStudents].reverse())}>Reverse Order</button>
-
+            <button onClick={() => navigate('/students/new')}>Add new student</button>
 
         </div>
     );

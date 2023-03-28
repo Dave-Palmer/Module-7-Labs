@@ -1,27 +1,26 @@
 import { TextField, Button, Box } from "@mui/material"
+import { Navigate, redirect, useNavigate } from "react-router-dom"
 import { students } from "./StudentList"
+import Student from "./NewStudentClass"
 
 
-class Student {
-    constructor(name, location, description, id) {
-        this.name = name
-        this.location = location
-        this.description = description
-        this.id = id
-    }
-}
-
-function NewStudent() {
+function AddNewStudent() {
+    const navigate = useNavigate()
 
     const handleSubmit = (event) => {
+
 
         event.preventDefault();
         const [name, location, description] = new FormData(event.currentTarget);
         console.log(name)
-        let student = new Student(name[1], location[1], description[1], 77)
+        let id = students.length + 1
+        let student = new Student(name[1], location[1], description[1], id)
         console.log(student)
         students.push(student)
-        console.log(students)
+        console.log(id);
+        alert(name[1] + ' ' + 'added to student list');
+        navigate('/students')
+        // return redirect('/students')
 
         // let username = data.get('username')
         // let password = data.get('password')
@@ -67,4 +66,4 @@ function NewStudent() {
     )
 }
 
-export default NewStudent
+export default AddNewStudent
