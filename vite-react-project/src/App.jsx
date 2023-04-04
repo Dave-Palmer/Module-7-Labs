@@ -3,7 +3,7 @@ import React from 'react'
 import Counter from './components/Counter'
 import WindowResizer from './components/WindowReziser'
 import LoginComponent from './components/Login'
-import { ThemeProvider } from './context/ThemeContext'
+// import { ThemeProvider } from './context/ThemeContext'
 import HookClockDisplay from './components/Clock'
 import { UsernameProvider } from './context/UserContext'
 import HeadingsExample from './components/HeadingsExample'
@@ -15,6 +15,7 @@ import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 import { ErrorBoundary } from 'react-error-boundary'
 import ErrorMessage from './components/ErrorHandler'
+import { ThemeProvider } from '@mui/material/styles'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -24,23 +25,23 @@ function App() {
   return (
     <div className="App components">
 
-      <ThemeProvider>
-        <UsernameProvider>
-          <EmojiProvider>
-            <NavBar />
-            <ErrorBoundary FallbackComponent={ErrorMessage}>
-              <AppRoutes />
-              {/* <EmojisDisplay /> */}
-              {/* <Hello /> */}
-              {/* <Counter /> */}
-              {/* <WindowResizer /> */}
-              {/* <HookClockDisplay /> */}
-              {/* <HeadingsExample /> */}
-              <Footer />
-            </ErrorBoundary>
-          </EmojiProvider>
-        </UsernameProvider>
-      </ThemeProvider>
+      {/* <ThemeProvider> */}
+      <UsernameProvider>
+        <EmojiProvider>
+          <NavBar />
+          <ErrorBoundary FallbackComponent={ErrorMessage}>
+            <AppRoutes />
+            {/* <EmojisDisplay /> */}
+            {/* <Hello /> */}
+            {/* <Counter /> */}
+            {/* <WindowResizer /> */}
+            {/* <HookClockDisplay /> */}
+            {/* <HeadingsExample /> */}
+            <Footer />
+          </ErrorBoundary>
+        </EmojiProvider>
+      </UsernameProvider>
+      {/* </ThemeProvider> */}
 
 
 
@@ -58,25 +59,5 @@ export default App
 
 
 
-{/* <div>
-<a href="https://vitejs.dev" target="_blank">
-  <img src={viteLogo} className="logo" alt="Vite logo" />
-</a>
-<a href="https://reactjs.org" target="_blank">
-  <img src={reactLogo} className="logo react" alt="React logo" />
-</a>
-</div>
-<h1>Vite + React</h1>
-<div className="card">
-<button onClick={() => setCount((count) => count + 1)}>
-  count is {count}
-</button>
-<p>
-  Edit <code>src/App.jsx</code> and save to test HMR
-</p>
-</div>
-<p className="read-the-docs">
-Click on the Vite and React logos to learn more
-</p> */}
 
 
